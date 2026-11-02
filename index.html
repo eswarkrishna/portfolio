@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Eswar Krishna · Portfolio</title>
+<meta name="description" content="Portfolio of Eswar Krishna">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fbfbfa; --surface: #ffffff; --text: #1c1d1f; --muted: #5f6368;
+    --line: #e6e6e3; --accent: #2b59c3; --accent-soft: #e9effb;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #111214; --surface: #1a1c1f; --text: #ececec; --muted: #a0a4a8;
+            --line: #2a2d31; --accent: #7aa2ff; --accent-soft: #1d2638; }
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+         font: 16px/1.6 Inter, system-ui, sans-serif; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 0 20px; }
+  header.nav { position: sticky; top: 0; background: color-mix(in srgb, var(--bg) 88%, transparent);
+               backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); z-index: 10; }
+  header.nav .wrap { display: flex; justify-content: space-between; align-items: center; height: 56px; }
+  header.nav nav { display: flex; gap: 18px; flex-wrap: wrap; font-size: 14px; }
+  header.nav nav a { color: var(--muted); }
+  .brand { font-weight: 700; color: var(--text); }
+  section { padding: 56px 0; border-bottom: 1px solid var(--line); }
+  h1 { font-size: clamp(32px, 6vw, 48px); line-height: 1.1; margin: 0 0 8px; }
+  h2 { font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin: 0 0 24px; }
+  h3 { margin: 0; font-size: 18px; }
+  .headline { font-size: 20px; color: var(--muted); margin: 0 0 20px; }
+  .links { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn { border: 1px solid var(--line); background: var(--surface); padding: 8px 14px; border-radius: 8px;
+         color: var(--text); font-size: 14px; font-weight: 500; }
+  .btn.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .job { display: grid; grid-template-columns: 160px 1fr; gap: 16px; padding: 18px 0; border-top: 1px solid var(--line); }
+  .job:first-of-type { border-top: 0; padding-top: 0; }
+  .when { color: var(--muted); font-size: 14px; }
+  .org { color: var(--muted); }
+  ul.bullets { margin: 8px 0 0; padding-left: 18px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip { background: var(--accent-soft); color: var(--accent); padding: 4px 10px; border-radius: 999px; font-size: 14px; }
+  .skill-group { margin-bottom: 18px; }
+  .skill-group h3 { font-size: 15px; margin-bottom: 8px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 18px; }
+  .card p { color: var(--muted); font-size: 15px; margin: 8px 0 12px; }
+  .tags { font-size: 13px; color: var(--muted); }
+  footer { padding: 32px 0; color: var(--muted); font-size: 14px; }
+  @media (max-width: 600px) {
+    .job { grid-template-columns: 1fr; gap: 4px; }
+    header.nav nav { gap: 12px; }
+    header.nav .brand { display: none; }
+  }
+</style>
+</head>
+<body>
+<header class="nav"><div class="wrap">
+  <a class="brand" href="#top" id="brand"></a>
+  <nav>
+    <a href="#about">About</a><a href="#experience">Experience</a><a href="#skills">Skills</a>
+    <a href="#projects">Projects</a><a href="#contact">Contact</a>
+  </nav>
+</div></header>
+
+<main class="wrap" id="top">
+  <section id="about">
+    <h1 id="name"></h1>
+    <p class="headline" id="headline"></p>
+    <p id="summary"></p>
+    <div class="links" id="hero-links"></div>
+  </section>
+  <section id="experience"><h2>Experience</h2><div id="jobs"></div></section>
+  <section id="education"><h2>Education</h2><div id="edu"></div></section>
+  <section id="skills"><h2>Skills</h2><div id="skill-groups"></div></section>
+  <section id="projects"><h2>Projects</h2><div class="grid" id="project-grid"></div></section>
+  <section id="contact"><h2>Contact</h2><p id="contact-text"></p><div class="links" id="contact-links"></div></section>
+</main>
+<footer class="wrap" id="foot"></footer>
+
+<script>
+/* ===== Edit everything below to update the site ===== */
+const PROFILE = {
+  name: "Eswar Krishna",
+  headline: "[Headline from LinkedIn, e.g. Senior Data Engineer · AI/ML]",
+  summary: "[About section from LinkedIn goes here.]",
+  location: "[City, Country]",
+  email: "[your-email@example.com]",
+  links: {
+    LinkedIn: "https://www.linkedin.com/in/[your-handle]",
+    GitHub: "https://github.com/eswarkrishna",
+  },
+  experience: [
+    { role: "[Job title]", org: "[Company]", when: "[2022 – Present]",
+      bullets: ["[Key achievement]", "[Key achievement]"] },
+  ],
+  education: [
+    { role: "[Degree]", org: "[University]", when: "[Years]", bullets: [] },
+  ],
+  skills: {
+    "Languages": ["Python", "Java", "R", "JavaScript"],
+    "Data & AI": ["Agentic AI", "Machine learning", "Spark", "Storm"],
+    "Tools": ["Git", "Docker", "SymmetricDS"],
+  },
+  projects: [
+    { name: "AgenticAI Capstone", repo: "AgenticAI-Capstone",
+      desc: "[One-line description]", tags: ["Python", "LLM agents"] },
+    { name: "Financial Planner", repo: "FinancialPlanner",
+      desc: "[One-line description]", tags: [] },
+    { name: "Stock Predict", repo: "stock_predict",
+      desc: "[One-line description]", tags: ["Python", "ML"] },
+    { name: "SymmetricDS Config", repo: "symmetricds-config",
+      desc: "[One-line description]", tags: ["Data sync"] },
+  ],
+};
+/* ===== End of editable content ===== */
+
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const P = PROFILE;
+document.title = `${P.name} · Portfolio`;
+$("brand").textContent = P.name;
+$("name").textContent = P.name;
+$("headline").textContent = P.headline;
+$("summary").textContent = P.summary;
+const linkHtml = (primary) => Object.entries(P.links)
+  .map(([k, v], i) => `<a class="btn${primary && i === 0 ? " primary" : ""}" href="${esc(v)}" target="_blank" rel="noopener">${esc(k)}</a>`).join("");
+$("hero-links").innerHTML = linkHtml(true) + `<a class="btn" href="#contact">Contact</a>`;
+const timeline = items => items.map(j => `
+  <div class="job"><div class="when">${esc(j.when)}</div>
+  <div><h3>${esc(j.role)}</h3><div class="org">${esc(j.org)}</div>
+  ${j.bullets.length ? `<ul class="bullets">${j.bullets.map(b => `<li>${esc(b)}</li>`).join("")}</ul>` : ""}</div></div>`).join("");
+$("jobs").innerHTML = timeline(P.experience);
+$("edu").innerHTML = timeline(P.education);
+$("skill-groups").innerHTML = Object.entries(P.skills).map(([g, list]) => `
+  <div class="skill-group"><h3>${esc(g)}</h3><div class="chips">${list.map(s => `<span class="chip">${esc(s)}</span>`).join("")}</div></div>`).join("");
+$("project-grid").innerHTML = P.projects.map(p => `
+  <div class="card"><h3>${esc(p.name)}</h3><p>${esc(p.desc)}</p>
+  <div class="tags">${p.tags.map(esc).join(" · ")}</div>
+  <a href="https://github.com/eswarkrishna/${esc(p.repo)}" target="_blank" rel="noopener">View on GitHub →</a></div>`).join("");
+$("contact-text").innerHTML = `Based in ${esc(P.location)}. Reach me at <a href="mailto:${esc(P.email)}">${esc(P.email)}</a>.`;
+$("contact-links").innerHTML = linkHtml(false);
+$("foot").textContent = `© ${new Date().getFullYear()} ${P.name}`;
+</script>
+</body>
+</html>
