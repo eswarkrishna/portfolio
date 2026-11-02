@@ -1,195 +1,568 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Eswar Krishna · Portfolio</title>
-<meta name="description" content="Eswara Krishna Aluri: enterprise architect and engineering leader in AI/ML and cloud">
+<title>Eswara Krishna Aluri · Enterprise Architect</title>
+<meta name="description" content="Eswara Krishna Aluri: enterprise architect and engineering leader building cloud-native and AI platforms. 19 years across healthcare, insurance, HCM and telecom.">
+<meta property="og:title" content="Eswara Krishna Aluri · Enterprise Architect">
+<meta property="og:description" content="Enterprise architect and engineering leader in AI/ML and cloud-native platforms.">
+<meta name="theme-color" content="#0a0d14">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230a0d14'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' dominant-baseline='middle' font-family='Arial' font-weight='700' font-size='26' fill='%2367e8f9'%3EEK%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #fbfbfa; --surface: #ffffff; --text: #1c1d1f; --muted: #5f6368;
-    --line: #e6e6e3; --accent: #2b59c3; --accent-soft: #e9effb;
+    --bg: #0a0d14; --bg-2: #0f1320; --surface: rgba(255,255,255,.035); --surface-solid: #121726;
+    --line: rgba(255,255,255,.08); --line-strong: rgba(255,255,255,.16);
+    --text: #e8ecf4; --muted: #98a2b8; --faint: #6b7590;
+    --accent: #67e8f9; --accent-2: #a78bfa; --accent-3: #f472b6;
+    --grad: linear-gradient(120deg, #67e8f9 0%, #a78bfa 55%, #f472b6 100%);
+    --glow: 0 0 0 1px rgba(103,232,249,.25), 0 20px 60px -20px rgba(103,232,249,.35);
+    --grid: rgba(255,255,255,.035);
+    --radius: 18px;
+    --display: "Space Grotesk", Inter, system-ui, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, monospace;
   }
-  @media (prefers-color-scheme: dark) {
-    :root { --bg: #111214; --surface: #1a1c1f; --text: #ececec; --muted: #a0a4a8;
-            --line: #2a2d31; --accent: #7aa2ff; --accent-soft: #1d2638; }
+  [data-theme="light"] {
+    --bg: #f6f7fb; --bg-2: #eef1f8; --surface: rgba(255,255,255,.75); --surface-solid: #ffffff;
+    --line: rgba(15,23,42,.09); --line-strong: rgba(15,23,42,.18);
+    --text: #0d1324; --muted: #4a5470; --faint: #7a839b;
+    --accent: #0891b2; --accent-2: #7c3aed; --accent-3: #db2777;
+    --grad: linear-gradient(120deg, #0891b2 0%, #7c3aed 55%, #db2777 100%);
+    --glow: 0 0 0 1px rgba(8,145,178,.25), 0 20px 50px -24px rgba(124,58,237,.35);
+    --grid: rgba(15,23,42,.045);
   }
   * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body { margin: 0; background: var(--bg); color: var(--text);
-         font: 16px/1.6 Inter, system-ui, sans-serif; }
-  a { color: var(--accent); text-decoration: none; }
-  a:hover { text-decoration: underline; }
-  .wrap { max-width: 880px; margin: 0 auto; padding: 0 20px; }
-  header.nav { position: sticky; top: 0; background: color-mix(in srgb, var(--bg) 88%, transparent);
-               backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); z-index: 10; }
-  header.nav .wrap { display: flex; justify-content: space-between; align-items: center; height: 56px; }
-  header.nav nav { display: flex; gap: 18px; flex-wrap: wrap; font-size: 14px; }
-  header.nav nav a { color: var(--muted); }
-  .brand { font-weight: 700; color: var(--text); }
-  section { padding: 56px 0; border-bottom: 1px solid var(--line); }
-  h1 { font-size: clamp(32px, 6vw, 48px); line-height: 1.1; margin: 0 0 8px; }
-  h2 { font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin: 0 0 24px; }
-  h3 { margin: 0; font-size: 18px; }
-  .headline { font-size: 20px; color: var(--muted); margin: 0 0 20px; }
-  .links { display: flex; gap: 12px; flex-wrap: wrap; }
-  .btn { border: 1px solid var(--line); background: var(--surface); padding: 8px 14px; border-radius: 8px;
-         color: var(--text); font-size: 14px; font-weight: 500; }
-  .btn.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
-  .job { display: grid; grid-template-columns: 160px 1fr; gap: 16px; padding: 18px 0; border-top: 1px solid var(--line); }
-  .job:first-of-type { border-top: 0; padding-top: 0; }
-  .when { color: var(--muted); font-size: 14px; }
-  .org { color: var(--muted); }
-  ul.bullets { margin: 8px 0 0; padding-left: 18px; }
+  html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.65 Inter, system-ui, sans-serif;
+         -webkit-font-smoothing: antialiased; overflow-x: hidden; transition: background .3s, color .3s; }
+  a { color: inherit; text-decoration: none; }
+  ::selection { background: var(--accent-2); color: #fff; }
+  .wrap { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+  .grad-text { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .mono { font-family: var(--mono); }
+
+  /* Background */
+  .bg-grid { position: fixed; inset: 0; z-index: -2; pointer-events: none;
+    background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size: 56px 56px; mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 40%, transparent 100%); }
+  .orb { position: fixed; z-index: -1; border-radius: 50%; filter: blur(90px); opacity: .35; pointer-events: none; }
+  .orb.a { width: 520px; height: 520px; background: #22d3ee; top: -180px; left: -120px; }
+  .orb.b { width: 480px; height: 480px; background: #8b5cf6; top: 80px; right: -160px; }
+  [data-theme="light"] .orb { opacity: .18; }
+
+  /* Nav */
+  .nav { position: fixed; top: 14px; left: 50%; transform: translateX(-50%); z-index: 50; width: min(1100px, calc(100% - 24px));
+         display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 12px 10px 18px;
+         background: color-mix(in srgb, var(--bg) 70%, transparent); backdrop-filter: blur(16px) saturate(140%);
+         border: 1px solid var(--line); border-radius: 999px; }
+  .logo { display: flex; align-items: center; gap: 10px; font-family: var(--display); font-weight: 700; letter-spacing: -.01em; }
+  .logo-mark { width: 30px; height: 30px; border-radius: 9px; display: grid; place-items: center; font-size: 13px;
+               background: var(--grad); color: #0a0d14; }
+  .nav-links { display: flex; gap: 4px; }
+  .nav-links a { padding: 7px 12px; border-radius: 999px; font-size: 14px; color: var(--muted); transition: .2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--text); background: var(--surface); }
+  .nav-actions { display: flex; align-items: center; gap: 8px; }
+  .icon-btn { width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--line); background: var(--surface);
+              color: var(--text); display: grid; place-items: center; cursor: pointer; transition: .2s; }
+  .icon-btn:hover { border-color: var(--line-strong); }
+  .icon-btn svg { width: 18px; height: 18px; }
+
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px; border-radius: 999px; font-weight: 600; font-size: 15px;
+         border: 1px solid var(--line-strong); background: var(--surface); transition: transform .2s, box-shadow .2s, border-color .2s; cursor: pointer; }
+  .btn:hover { transform: translateY(-2px); border-color: var(--accent); }
+  .btn.primary { background: var(--grad); color: #0a0d14; border: 0; box-shadow: var(--glow); }
+  .btn.sm { padding: 8px 16px; font-size: 14px; }
+  .btn svg { width: 16px; height: 16px; }
+
+  /* Hero */
+  .hero { padding: 150px 0 70px; display: grid; grid-template-columns: 1.25fr .9fr; gap: 56px; align-items: center; }
+  .pill { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px 6px 10px; border-radius: 999px; font-size: 13px;
+          border: 1px solid var(--line); background: var(--surface); color: var(--muted); }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: #34d399; box-shadow: 0 0 0 4px rgba(52,211,153,.18); animation: pulse 2s infinite; }
+  @keyframes pulse { 50% { box-shadow: 0 0 0 7px rgba(52,211,153,0); } }
+  h1 { font-family: var(--display); font-size: clamp(40px, 6.2vw, 72px); line-height: 1.02; letter-spacing: -.035em; margin: 22px 0 18px; font-weight: 700; }
+  .hero-sub { font-size: 18px; color: var(--muted); max-width: 560px; margin: 0 0 30px; }
+  .hero-sub strong { color: var(--text); font-weight: 600; }
+  .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+  .socials { display: flex; gap: 10px; margin-top: 28px; }
+
+  .code-card { position: relative; border-radius: 22px; background: var(--surface-solid); border: 1px solid var(--line);
+               box-shadow: 0 30px 80px -30px rgba(0,0,0,.6); overflow: hidden; }
+  .code-card::before { content: ""; position: absolute; inset: -1px; border-radius: 22px; padding: 1px; background: var(--grad);
+                       -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; opacity: .55; }
+  .code-head { display: flex; align-items: center; gap: 7px; padding: 14px 18px; border-bottom: 1px solid var(--line); }
+  .code-head i { width: 11px; height: 11px; border-radius: 50%; background: var(--line-strong); }
+  .code-head i:nth-child(1){background:#f87171}.code-head i:nth-child(2){background:#fbbf24}.code-head i:nth-child(3){background:#34d399}
+  .code-head span { margin-left: 10px; font-family: var(--mono); font-size: 12px; color: var(--faint); }
+  pre.code { margin: 0; padding: 20px 22px 24px; font: 13.5px/1.85 var(--mono); color: var(--muted); white-space: pre-wrap; }
+  .k { color: var(--accent-2); } .s { color: var(--accent); } .n { color: var(--accent-3); } .c { color: var(--faint); }
+
+  /* Stats */
+  .stats { display: grid; grid-template-columns: repeat(5, 1fr); border: 1px solid var(--line); border-radius: var(--radius);
+           background: var(--surface); backdrop-filter: blur(8px); }
+  .stat { padding: 26px 22px; border-left: 1px solid var(--line); }
+  .stat:first-child { border-left: 0; }
+  .stat b { display: block; font-family: var(--display); font-size: 38px; line-height: 1; letter-spacing: -.03em; }
+  .stat span { display: block; margin-top: 8px; font-size: 13.5px; color: var(--muted); }
+
+  /* Sections */
+  section { padding: 110px 0 0; }
+  .eyebrow { font-family: var(--mono); font-size: 12.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
+  .eyebrow::before { content: ""; width: 22px; height: 1px; background: currentColor; }
+  h2 { font-family: var(--display); font-size: clamp(30px, 4vw, 46px); letter-spacing: -.03em; line-height: 1.08; margin: 0 0 18px; font-weight: 700; }
+  .lead { color: var(--muted); font-size: 17px; max-width: 640px; margin: 0 0 44px; }
+
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 26px; position: relative;
+          transition: transform .25s, border-color .25s, box-shadow .25s; }
+  .card:hover { transform: translateY(-4px); border-color: var(--line-strong); }
+
+  /* About */
+  .about { display: grid; grid-template-columns: 1.2fr 1fr; gap: 28px; }
+  .about p { color: var(--muted); margin: 0 0 16px; font-size: 16.5px; }
+  .about p:first-child { color: var(--text); font-size: 19px; line-height: 1.6; }
+  .focus-list { display: grid; gap: 12px; }
+  .focus { display: flex; gap: 14px; align-items: flex-start; }
+  .focus .ic { flex: none; width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center;
+               background: color-mix(in srgb, var(--accent) 12%, transparent); color: var(--accent); }
+  .focus .ic svg { width: 20px; height: 20px; }
+  .focus h4 { margin: 0 0 2px; font-size: 15.5px; }
+  .focus p { margin: 0 !important; font-size: 14.5px !important; color: var(--muted) !important; }
+
+  /* Impact */
+  .impact { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .impact .num { font-family: var(--display); font-size: 52px; line-height: 1; letter-spacing: -.04em; font-weight: 700; margin-bottom: 14px; }
+  .impact p { margin: 0 0 14px; color: var(--muted); font-size: 15px; }
+  .impact .where { font-family: var(--mono); font-size: 12px; color: var(--faint); }
+
+  /* Timeline */
+  .timeline { position: relative; padding-left: 34px; }
+  .timeline::before { content: ""; position: absolute; left: 8px; top: 8px; bottom: 8px; width: 2px;
+                      background: linear-gradient(var(--accent), var(--accent-2), transparent); opacity: .5; border-radius: 2px; }
+  .role { position: relative; margin-bottom: 18px; }
+  .role::before { content: ""; position: absolute; left: -32px; top: 30px; width: 14px; height: 14px; border-radius: 50%;
+                  background: var(--bg); border: 2px solid var(--accent); }
+  .role.current::before { background: var(--accent); box-shadow: 0 0 0 6px color-mix(in srgb, var(--accent) 20%, transparent); }
+  .role-head { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; align-items: baseline; }
+  .role h3 { font-family: var(--display); font-size: 21px; margin: 0; letter-spacing: -.015em; }
+  .role .org { color: var(--accent); font-weight: 500; }
+  .role .meta { font-family: var(--mono); font-size: 12.5px; color: var(--faint); white-space: nowrap; }
+  .role ul { margin: 14px 0 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+  .role li { position: relative; padding-left: 20px; color: var(--muted); font-size: 15px; }
+  .role li::before { content: ""; position: absolute; left: 2px; top: 10px; width: 6px; height: 6px; border-radius: 2px; background: var(--accent-2); transform: rotate(45deg); }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; }
+  .tag { font-family: var(--mono); font-size: 11.5px; padding: 4px 9px; border-radius: 7px; border: 1px solid var(--line); color: var(--muted); }
+  .earlier { display: none; }
+  .earlier.open { display: block; }
+  .more-btn { margin: 6px 0 0 -34px; }
+
+  /* Skills bento */
+  .bento { display: grid; grid-template-columns: repeat(6, 1fr); gap: 18px; }
+  .bento .card:nth-child(1) { grid-column: span 3; }
+  .bento .card:nth-child(2) { grid-column: span 3; }
+  .bento .card:nth-child(3) { grid-column: span 2; }
+  .bento .card:nth-child(4) { grid-column: span 2; }
+  .bento .card:nth-child(5) { grid-column: span 2; }
+  .bento h3 { display: flex; align-items: center; gap: 10px; font-family: var(--display); font-size: 18px; margin: 0 0 16px; }
+  .bento h3 svg { width: 20px; height: 20px; color: var(--accent); }
   .chips { display: flex; flex-wrap: wrap; gap: 8px; }
-  .chip { background: var(--accent-soft); color: var(--accent); padding: 4px 10px; border-radius: 999px; font-size: 14px; }
-  .skill-group { margin-bottom: 18px; }
-  .skill-group h3 { font-size: 15px; margin-bottom: 8px; }
-  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
-  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 18px; }
-  .card p { color: var(--muted); font-size: 15px; margin: 8px 0 12px; }
-  .tags { font-size: 13px; color: var(--muted); }
-  footer { padding: 32px 0; color: var(--muted); font-size: 14px; }
-  @media (max-width: 600px) {
-    .job { grid-template-columns: 1fr; gap: 4px; }
-    header.nav nav { gap: 12px; }
-    header.nav .brand { display: none; }
+  .chip { padding: 6px 12px; border-radius: 999px; font-size: 13.5px; background: color-mix(in srgb, var(--text) 5%, transparent);
+          border: 1px solid var(--line); transition: .2s; }
+  .chip:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* Recognition */
+  .recog { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; }
+  .medals { display: flex; gap: 10px; margin: 6px 0 16px; }
+  .medal { flex: 1; text-align: center; padding: 14px 6px; border-radius: 14px; border: 1px solid var(--line); }
+  .medal b { display: block; font-family: var(--display); font-size: 30px; line-height: 1; }
+  .medal span { font-size: 12px; color: var(--muted); }
+  .medal.g b { color: #fbbf24; } .medal.s b { color: #cbd5e1; } .medal.b b { color: #d97706; }
+  [data-theme="light"] .medal.s b { color: #64748b; }
+  .list-clean { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+  .list-clean li b { display: block; font-size: 15px; }
+  .list-clean li span { font-size: 13.5px; color: var(--muted); }
+  .card h3.t { font-family: var(--display); font-size: 18px; margin: 0 0 14px; }
+
+  /* Projects */
+  .projects { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+  .project { display: flex; flex-direction: column; overflow: hidden; }
+  .project::after { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 3px; background: var(--grad); opacity: 0; transition: .25s; }
+  .project:hover::after { opacity: 1; }
+  .project .top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+  .project .folder { width: 42px; height: 42px; border-radius: 12px; display: grid; place-items: center;
+                     background: color-mix(in srgb, var(--accent-2) 14%, transparent); color: var(--accent-2); }
+  .project .folder svg, .project .arrow svg { width: 20px; height: 20px; }
+  .project .arrow { color: var(--faint); transition: .25s; }
+  .project:hover .arrow { color: var(--accent); transform: translate(3px,-3px); }
+  .project h3 { font-family: var(--display); font-size: 20px; margin: 0 0 8px; }
+  .project p { color: var(--muted); font-size: 15px; margin: 0 0 16px; flex: 1; }
+
+  /* Contact */
+  .cta { margin: 110px 0 0; padding: 64px 48px; border-radius: 28px; text-align: center; position: relative; overflow: hidden;
+         border: 1px solid var(--line); background: radial-gradient(ellipse at top, color-mix(in srgb, var(--accent-2) 22%, transparent), transparent 70%), var(--surface); }
+  .cta h2 { font-size: clamp(32px, 5vw, 54px); max-width: 760px; margin: 14px auto 16px; }
+  .cta p { color: var(--muted); max-width: 560px; margin: 0 auto 30px; font-size: 17px; }
+  .cta .hero-ctas { justify-content: center; }
+  footer { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding: 40px 0 48px; color: var(--faint); font-size: 14px; }
+
+  /* Reveal */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } .dot { animation: none; } html { scroll-behavior: auto; } }
+
+  /* Responsive */
+  @media (max-width: 960px) {
+    .hero { grid-template-columns: 1fr; padding-top: 130px; gap: 40px; }
+    .stats { grid-template-columns: repeat(3, 1fr); }
+    .stat:nth-child(4) { border-left: 0; }
+    .stat:nth-child(n+4) { border-top: 1px solid var(--line); }
+    .about, .recog { grid-template-columns: 1fr; }
+    .impact { grid-template-columns: 1fr 1fr; }
+    .bento .card:nth-child(n) { grid-column: span 3; }
+    .nav-links { display: none; }
+  }
+  @media (max-width: 620px) {
+    .wrap { padding: 0 16px; }
+    .stats { grid-template-columns: 1fr 1fr; }
+    .stat { border-left: 0 !important; border-top: 1px solid var(--line); }
+    .stat:nth-child(odd) { border-right: 1px solid var(--line); }
+    .stat:nth-child(-n+2) { border-top: 0; }
+    .stat:last-child { grid-column: span 2; border-right: 0; }
+    .impact, .projects { grid-template-columns: 1fr; }
+    .bento .card:nth-child(n) { grid-column: span 6; }
+    .timeline { padding-left: 24px; }
+    .role::before { left: -22px; }
+    .timeline::before { left: 4px; }
+    .more-btn { margin-left: -24px; }
+    .cta { padding: 44px 22px; }
+    .card { padding: 22px; }
+    .nav-actions .btn { display: none; }
+    section { padding-top: 84px; }
   }
 </style>
 </head>
 <body>
-<header class="nav"><div class="wrap">
-  <a class="brand" href="#top" id="brand"></a>
-  <nav>
-    <a href="#about">About</a><a href="#experience">Experience</a><a href="#skills">Skills</a>
-    <a href="#projects">Projects</a><a href="#contact">Contact</a>
+<div class="bg-grid"></div><div class="orb a"></div><div class="orb b"></div>
+
+<header class="nav">
+  <a href="#top" class="logo"><span class="logo-mark">EK</span><span id="nav-name"></span></a>
+  <nav class="nav-links" id="nav-links">
+    <a href="#about">About</a><a href="#impact">Impact</a><a href="#experience">Experience</a>
+    <a href="#skills">Skills</a><a href="#projects">Projects</a>
   </nav>
-</div></header>
+  <div class="nav-actions">
+    <button class="icon-btn" id="theme-btn" aria-label="Toggle light and dark theme"></button>
+    <a class="btn primary sm" href="#contact">Let's talk</a>
+  </div>
+</header>
 
 <main class="wrap" id="top">
+  <div class="hero">
+    <div class="reveal">
+      <span class="pill"><span class="dot"></span><span id="availability"></span></span>
+      <h1 id="hero-title"></h1>
+      <p class="hero-sub" id="hero-sub"></p>
+      <div class="hero-ctas">
+        <a class="btn primary" href="#experience">View my work
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn" href="#contact">Get in touch</a>
+      </div>
+      <div class="socials" id="socials"></div>
+    </div>
+    <div class="code-card reveal" aria-hidden="true">
+      <div class="code-head"><i></i><i></i><i></i><span>architect.yaml</span></div>
+      <pre class="code" id="code"></pre>
+    </div>
+  </div>
+
+  <div class="stats reveal" id="stats"></div>
+
   <section id="about">
-    <h1 id="name"></h1>
-    <p class="headline" id="headline"></p>
-    <p id="summary"></p>
-    <ul class="bullets" id="highlights"></ul>
-    <div class="links" id="hero-links" style="margin-top:20px"></div>
+    <div class="eyebrow">About</div>
+    <h2>Turning complex business problems into <span class="grad-text">platforms that scale</span>.</h2>
+    <div class="about">
+      <div class="reveal" id="about-text"></div>
+      <div class="card reveal"><div class="focus-list" id="focus"></div></div>
+    </div>
   </section>
-  <section id="experience"><h2>Experience</h2><div id="jobs"></div></section>
-  <section id="education"><h2>Education</h2><div id="edu"></div></section>
-  <section id="skills"><h2>Skills</h2><div id="skill-groups"></div><h2 style="margin-top:32px">Certifications</h2><div class="chips" id="certs"></div></section>
-  <section id="projects"><h2>Projects</h2><div class="grid" id="project-grid"></div></section>
-  <section id="contact"><h2>Contact</h2><p id="contact-text"></p><div class="links" id="contact-links"></div></section>
+
+  <section id="impact">
+    <div class="eyebrow">Impact</div>
+    <h2>Outcomes, not just architecture.</h2>
+    <p class="lead">A few of the results my teams and I have delivered.</p>
+    <div class="impact" id="impact-grid"></div>
+  </section>
+
+  <section id="experience">
+    <div class="eyebrow">Experience</div>
+    <h2>19 years of building what lasts.</h2>
+    <p class="lead">From telecom tooling to AI-driven healthcare platforms.</p>
+    <div class="timeline" id="timeline"></div>
+  </section>
+
+  <section id="skills">
+    <div class="eyebrow">Toolkit</div>
+    <h2>Skills & technologies</h2>
+    <p class="lead">A polyglot stack, chosen for the problem rather than the trend.</p>
+    <div class="bento" id="bento"></div>
+  </section>
+
+  <section id="recognition">
+    <div class="eyebrow">Recognition</div>
+    <h2>Credentials & education</h2>
+    <div class="recog" id="recog"></div>
+  </section>
+
+  <section id="projects">
+    <div class="eyebrow">Open source</div>
+    <h2>Selected projects</h2>
+    <p class="lead">Side projects and experiments on GitHub.</p>
+    <div class="projects" id="project-grid"></div>
+  </section>
+
+  <div class="cta reveal" id="contact">
+    <div class="eyebrow" style="justify-content:center">Contact</div>
+    <h2>Have a platform to build or modernize? <span class="grad-text">Let's talk.</span></h2>
+    <p id="contact-text"></p>
+    <div class="hero-ctas" id="contact-links"></div>
+  </div>
+
+  <footer><span id="foot"></span><span>Built with care · Hosted on GitHub Pages</span></footer>
 </main>
-<footer class="wrap" id="foot"></footer>
 
 <script>
 /* ===== Edit everything below to update the site ===== */
 const PROFILE = {
   name: "Eswara Krishna Aluri",
-  headline: "Enterprise Architect & Engineering Leader · AI/ML · Cloud & AI-Native · Full-stack",
-  summary: "Senior Advisor at Evernorth Health Services and former Principal Solutions Architect at DMI, with nearly 19 years of experience building secure, scalable and intelligent platforms. I architect cloud-native solutions on AWS, design and deploy ML and generative AI systems, and build big data platforms on Kafka, Elasticsearch, Redis and the ELK stack. I work across Java, Python, Node.js and Go, and focus on turning complex business problems into technical solutions with measurable impact.",
-  highlights: [
-    "Kaggle medalist (2023–2024): 1 gold, 1 silver, 3 bronze",
-    "Architected platforms handling millions of daily transactions with high availability",
-    "Led cross-functional teams on enterprise modernization in healthcare, insurance and HCM",
+  shortName: "Eswara Krishna",
+  title: "Enterprise Architect & Engineering Leader",
+  availability: "Open to architecture & consulting roles",
+  heroTitle: 'I architect <span class="grad-text">cloud & AI platforms</span> that move businesses forward.',
+  heroSub: "<strong>Enterprise Architect</strong> with 19 years across healthcare, insurance, HCM and telecom. I design secure, scalable, AI-native systems and lead the teams that ship them.",
+  about: [
+    "I'm a Senior Advisor at Evernorth Health Services and a former Principal Solutions Architect at DMI. I build platforms that handle millions of daily transactions and turn them into measurable business results.",
+    "My work spans cloud-native architecture on AWS, machine learning and generative AI, and big data systems on Kafka, Elasticsearch and Redis. I work hands-on in Java, Python, Node.js and Go.",
+    "I trained at IIIT Hyderabad and the Indian School of Business, and I compete on Kaggle for fun.",
   ],
-  location: "Hyderabad, Telangana, India",
+  focus: [
+    { icon: "cloud", title: "Cloud & infrastructure", text: "Resilient, cloud-native platforms and enterprise-scale migrations on AWS." },
+    { icon: "brain", title: "AI/ML & generative AI", text: "Models and AI-assisted engineering that drive automation and better decisions." },
+    { icon: "db", title: "Big data ecosystems", text: "Kafka, Elasticsearch, Redis and ELK platforms built for massive volume." },
+    { icon: "users", title: "Technology leadership", text: "Cross-functional teams, architecture governance and executive advisory." },
+  ],
+  location: "Hyderabad, India",
   email: "",
   links: {
     LinkedIn: "https://www.linkedin.com/in/eswarakrishna",
     GitHub: "https://github.com/eswarkrishna",
   },
+  stats: [
+    { value: 19, suffix: "+", label: "Years in software" },
+    { value: 8, suffix: "", label: "Companies" },
+    { value: 5, suffix: "", label: "Kaggle medals" },
+    { value: 60, suffix: "%", label: "Faster go-to-market" },
+    { value: 1, prefix: "$", suffix: "M", label: "Cost savings delivered" },
+  ],
+  impact: [
+    { num: "60%", text: "faster go-to-market and 80% lower implementation cost from migrating Java monoliths to Node.js with spec-driven, AI-assisted development.", where: "Evernorth" },
+    { num: "40–50%", text: "less claim processing time from AI/ML workflow optimization and automatic fault prediction.", where: "DMI" },
+    { num: "2×", text: "product revenue roadmap unlocked by visualization dashboards for insurance leadership.", where: "DMI" },
+    { num: "$1M", text: "in cost savings as part of a cross-functional HCM product team.", where: "ADP" },
+    { num: "25%", text: "lower deployment costs by re-engineering and stabilizing operational processes.", where: "DMI" },
+    { num: "50%", text: "less time analyzing support changes, thanks to a global audit-log dashboard for executives.", where: "ADP" },
+  ],
   experience: [
-    { role: "Senior Advisor", org: "Evernorth Health Services · Hyderabad", when: "Aug 2024 – Oct 2026",
+    { role: "Senior Advisor", org: "Evernorth Health Services", place: "Hyderabad", when: "Aug 2024 – Oct 2026", current: true,
       bullets: [
-        "Designed AI-driven solution strategies for pharmacy, payment integration and insurance platforms.",
-        "Migrated Java Spring Boot monoliths to Node.js microservices on AWS EKS using spec-driven development with Cursor and GitHub Copilot, improving time to market by 60% and cutting implementation cost by 80%.",
-        "Built cloud-native healthcare solutions on AWS with strong observability, automated blue/green deployments and secure integrations.",
-        "Contributed to architecture governance and modernization frameworks that reduced technical debt.",
-      ] },
-    { role: "Principal Solutions Architect", org: "DMI (Digital Management, LLC) · Chennai", when: "Dec 2021 – Aug 2024",
+        "Design AI-driven solution strategies for pharmacy, payment integration and insurance platforms.",
+        "Lead the migration of Java Spring Boot monoliths to Node.js microservices on AWS EKS using spec-driven development with Cursor and GitHub Copilot.",
+        "Build cloud-native healthcare solutions with strong observability, blue/green deployments and secure integrations.",
+        "Shape architecture governance and modernization frameworks that reduce technical debt.",
+      ], tags: ["AWS EKS", "Node.js", "Java", "GenAI", "Spec-driven dev"] },
+    { role: "Principal Solutions Architect", org: "DMI (Digital Management, LLC)", place: "Chennai", when: "Dec 2021 – Aug 2024",
       bullets: [
-        "Architected insurance-domain solutions across Java, Angular, Python, Spring Boot, AWS Lambda, API Gateway, Kong, Cognito, Elasticsearch, Terraform and PostgreSQL.",
-        "Designed AI/ML claim-processing optimization and automatic fault prediction, saving 40–50% of processing time overall.",
-        "Built visualization dashboards that set a roadmap to 2× product revenue.",
-        "Cut deployment costs by about 25% by re-engineering operational processes.",
-      ] },
-    { role: "Software Development Consultant", org: "ADP · Hyderabad", when: "Dec 2016 – Nov 2021",
+        "Architected insurance-domain platforms end to end, from business vision to launch.",
+        "Designed AI/ML claim-processing optimization and automatic fault prediction.",
+        "Advised executives and department heads on aligning technology strategy with company goals.",
+      ], tags: ["Spring Boot", "Angular", "Lambda", "Kong", "Terraform", "NLP"] },
+    { role: "Software Development Consultant", org: "ADP", place: "Hyderabad", when: "Dec 2016 – Nov 2021",
       bullets: [
-        "Led development of HCM products on AWS, microservices, Spring Boot, Angular, Kafka, Redis and ELK.",
-        "Part of a cross-functional team that delivered $1M in cost savings.",
-        "Built a global audit log dashboard that cut time spent analyzing support changes by 50%.",
-      ] },
-    { role: "Senior Systems Analyst", org: "UST Global · Bengaluru", when: "Sep 2014 – Dec 2016",
-      bullets: [
-        "Built a highly available IoT platform for location-aware services for Cisco EMSP using Storm, Kafka, Mule, Redis, Zookeeper and RabbitMQ on AWS.",
-        "Served as Scrum Master for cross-functional delivery.",
-      ] },
-    { role: "Principal Engineer", org: "MeritTrac Services · Bengaluru", when: "Jan 2013 – Sep 2014",
-      bullets: ["Built the core modules of an exam assessment platform from scratch and took them to production, leading a team of two."] },
-    { role: "Senior Software Engineer", org: "Cisco Video Technologies · Bengaluru", when: "Sep 2011 – Jan 2013",
-      bullets: ["Implemented Java EPG features using core Java, design patterns and XML/XSLT."] },
-    { role: "Senior Software Engineer", org: "OnMobile · Bengaluru", when: "Sep 2008 – Aug 2011",
-      bullets: ["Delivered RingBackTone frameworks (Web/WAP and USSD) for 5–6 international and domestic clients, scaling them with Lucene, Solr and Memcached."] },
-    { role: "Software Engineer", org: "Aricent Technologies · Bengaluru", when: "Aug 2007 – Sep 2008",
-      bullets: ["Built telecom network performance and configuration tooling in Java."] },
+        "Led development of HCM products, managing a team and owning architecture and delivery.",
+        "Owned database design, requirements analysis and SRS creation directly with clients.",
+      ], tags: ["Microservices", "Kafka", "Redis", "GoldenGate", "Splunk"] },
+    { role: "Senior Systems Analyst", org: "UST Global", place: "Bengaluru", when: "Sep 2014 – Dec 2016",
+      bullets: ["Built a highly available IoT platform for location-aware services for Cisco EMSP.", "Served as Scrum Master for cross-functional delivery."],
+      tags: ["Storm", "Kafka", "Mule", "RabbitMQ", "AWS"] },
+    { role: "Principal Engineer", org: "MeritTrac Services", place: "Bengaluru", when: "Jan 2013 – Sep 2014",
+      bullets: ["Built the core modules of an exam assessment platform from scratch and took them to production."],
+      tags: ["Java", "Spring", "Lucene", "RabbitMQ"] },
+    { role: "Senior Software Engineer", org: "Cisco Video Technologies", place: "Bengaluru", when: "Sep 2011 – Jan 2013",
+      bullets: ["Implemented Java EPG features using core Java, design patterns and XML/XSLT."], tags: ["Java", "XSLT"] },
+    { role: "Senior Software Engineer", org: "OnMobile", place: "Bengaluru", when: "Sep 2008 – Aug 2011",
+      bullets: ["Delivered RingBackTone frameworks for 5–6 international and domestic clients; promoted for the work."],
+      tags: ["Solr", "Lucene", "Memcached"] },
+    { role: "Software Engineer", org: "Aricent Technologies", place: "Bengaluru", when: "Aug 2007 – Sep 2008",
+      bullets: ["Built telecom network performance and configuration tooling."], tags: ["Java", "JDBC"] },
+  ],
+  visibleRoles: 3,
+  skills: [
+    { icon: "brain", title: "Architecture & AI", items: ["Software architecture", "Generative AI", "Machine learning", "Deep learning", "NLP", "Spec-driven development", "AI-assisted engineering"] },
+    { icon: "cloud", title: "Cloud & DevOps", items: ["AWS", "EKS", "Lambda", "API Gateway", "Cognito", "Terraform", "Blue/green deployments", "Disaster recovery"] },
+    { icon: "db", title: "Data & messaging", items: ["Kafka", "Elasticsearch", "ELK", "Redis", "DynamoDB", "PostgreSQL", "Storm"] },
+    { icon: "code", title: "Languages", items: ["Java", "Python", "Node.js", "Go", "TypeScript"] },
+    { icon: "layers", title: "Frameworks", items: ["Spring Boot", "Angular", "Microservices", "OAuth 2.0", "Kong"] },
+  ],
+  kaggle: { gold: 1, silver: 1, bronze: 3, years: "2023–2024" },
+  certifications: [
+    { name: "AWS Certified AI Practitioner", by: "Amazon Web Services" },
+    { name: "The Data Scientist’s Toolbox", by: "Johns Hopkins · Coursera" },
+    { name: "R Programming", by: "Johns Hopkins · Coursera" },
+    { name: "Using Databases with Python", by: "University of Michigan · Coursera" },
   ],
   education: [
-    { role: "Advanced Management Programme in Business Analytics", org: "Indian School of Business", when: "2016 – 2017", bullets: [] },
-    { role: "MSIT, Computer Software Engineering", org: "IIIT Hyderabad", when: "2005 – 2007", bullets: [] },
-    { role: "B.Tech, Computer Science and Information Technology", org: "Nagarjuna Institute of Technology", when: "2000 – 2004", bullets: [] },
+    { name: "Indian School of Business", by: "Advanced Management Programme, Business Analytics · 2016–17" },
+    { name: "IIIT Hyderabad", by: "MSIT, Computer Software Engineering · 2005–07" },
+    { name: "Nagarjuna Institute of Technology", by: "B.Tech, Computer Science & IT · 2000–04" },
   ],
-  skills: {
-    "Architecture & AI": ["Software architecture", "Generative AI", "Machine learning", "Deep learning", "NLP", "Spec-driven development"],
-    "Cloud & DevOps": ["AWS", "EKS", "Lambda", "API Gateway", "Terraform", "Blue/green deployments"],
-    "Data & Messaging": ["Kafka", "Elasticsearch", "ELK", "Redis", "DynamoDB", "PostgreSQL", "Storm"],
-    "Languages & Frameworks": ["Java", "Spring Boot", "Python", "Node.js", "Go", "Angular"],
-  },
-  certifications: ["AWS Certified AI Practitioner", "The Data Scientist’s Toolbox", "R Programming", "Using Databases with Python"],
   projects: [
-    { name: "AgenticAI Capstone", repo: "AgenticAI-Capstone",
-      desc: "Capstone project exploring agentic AI workflows.", tags: ["Python", "LLM agents"] },
-    { name: "Financial Planner", repo: "FinancialPlanner",
-      desc: "Personal financial planning tool.", tags: [] },
-    { name: "Stock Predict", repo: "stock_predict",
-      desc: "Machine learning models for stock price prediction.", tags: ["Python", "ML"] },
-    { name: "SymmetricDS Config", repo: "symmetricds-config",
-      desc: "Configuration for database replication with SymmetricDS.", tags: ["Data sync"] },
+    { name: "AgenticAI Capstone", repo: "AgenticAI-Capstone", desc: "Capstone project exploring agentic AI workflows.", tags: ["Python", "LLM agents"] },
+    { name: "Financial Planner", repo: "FinancialPlanner", desc: "Personal financial planning app with calculators, budgets and payoff planning.", tags: ["TypeScript", "Vite"] },
+    { name: "Stock Predict", repo: "stock_predict", desc: "Machine learning models for stock price prediction.", tags: ["Python", "ML"] },
+    { name: "SymmetricDS Config", repo: "symmetricds-config", desc: "Configuration for database replication with SymmetricDS.", tags: ["Data sync"] },
   ],
 };
 /* ===== End of editable content ===== */
 
-const $ = id => document.getElementById(id);
-const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const ICONS = {
+  cloud: '<path d="M7 18a5 5 0 1 1 .9-9.9A6 6 0 0 1 19 10a4 4 0 0 1-1 8H7z"/>',
+  brain: '<path d="M9 3a3 3 0 0 0-3 3v.5A3 3 0 0 0 4 12a3 3 0 0 0 2 5.5V18a3 3 0 0 0 6 0V6a3 3 0 0 0-3-3zM15 3a3 3 0 0 1 3 3v.5a3 3 0 0 1 2 5.5 3 3 0 0 1-2 5.5V18a3 3 0 0 1-6 0"/>',
+  db: '<ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/>',
+  users: '<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.5a3.5 3.5 0 0 1 0 7M18 14a6 6 0 0 1 3.5 6"/>',
+  code: '<path d="M8 6l-6 6 6 6M16 6l6 6-6 6"/>',
+  layers: '<path d="M12 3l9 5-9 5-9-5 9-5zM3 13l9 5 9-5"/>',
+  folder: '<path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>',
+  arrow: '<path d="M7 17L17 7M8 7h9v9"/>',
+  linkedin: '<rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/>',
+  github: '<path d="M9 19c-4 1.5-4-2-6-2.5M15 21v-3.5a3 3 0 0 0-.8-2.3c2.8-.3 5.8-1.4 5.8-6.2a4.8 4.8 0 0 0-1.3-3.3 4.5 4.5 0 0 0-.1-3.3s-1-.3-3.4 1.3a11.6 11.6 0 0 0-6 0C6.6 2.1 5.6 2.4 5.6 2.4a4.5 4.5 0 0 0-.1 3.3A4.8 4.8 0 0 0 4.2 9c0 4.8 3 5.9 5.8 6.2a3 3 0 0 0-.8 2.3V21"/>',
+  mail: '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>',
+  sun: '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>',
+  moon: '<path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>',
+};
+const svg = (n) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${ICONS[n] || ""}</svg>`;
+const esc = (s) => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const $ = (id) => document.getElementById(id);
 const P = PROFILE;
-document.title = `${P.name} · Portfolio`;
-$("brand").textContent = P.name;
-$("name").textContent = P.name;
-$("headline").textContent = P.headline;
-$("summary").textContent = P.summary;
-$("highlights").innerHTML = P.highlights.map(h => `<li>${esc(h)}</li>`).join("");
-$("certs").innerHTML = P.certifications.map(c => `<span class="chip">${esc(c)}</span>`).join("");
-const linkHtml = (primary) => Object.entries(P.links)
-  .map(([k, v], i) => `<a class="btn${primary && i === 0 ? " primary" : ""}" href="${esc(v)}" target="_blank" rel="noopener">${esc(k)}</a>`).join("");
-$("hero-links").innerHTML = linkHtml(true) + `<a class="btn" href="#contact">Contact</a>`;
-const timeline = items => items.map(j => `
-  <div class="job"><div class="when">${esc(j.when)}</div>
-  <div><h3>${esc(j.role)}</h3><div class="org">${esc(j.org)}</div>
-  ${j.bullets.length ? `<ul class="bullets">${j.bullets.map(b => `<li>${esc(b)}</li>`).join("")}</ul>` : ""}</div></div>`).join("");
-$("jobs").innerHTML = timeline(P.experience);
-$("edu").innerHTML = timeline(P.education);
-$("skill-groups").innerHTML = Object.entries(P.skills).map(([g, list]) => `
-  <div class="skill-group"><h3>${esc(g)}</h3><div class="chips">${list.map(s => `<span class="chip">${esc(s)}</span>`).join("")}</div></div>`).join("");
+
+$("nav-name").textContent = P.shortName;
+$("availability").textContent = P.availability;
+$("hero-title").innerHTML = P.heroTitle;
+$("hero-sub").innerHTML = P.heroSub;
+
+const socialIcon = { LinkedIn: "linkedin", GitHub: "github" };
+$("socials").innerHTML = Object.entries(P.links).map(([k, v]) =>
+  `<a class="icon-btn" href="${esc(v)}" target="_blank" rel="noopener" aria-label="${esc(k)}">${svg(socialIcon[k] || "arrow")}</a>`).join("");
+
+$("code").innerHTML =
+`<span class="k">name</span>: <span class="s">${esc(P.name)}</span>
+<span class="k">role</span>: <span class="s">${esc(P.title)}</span>
+<span class="k">based_in</span>: <span class="s">${esc(P.location)}</span>
+<span class="k">experience_years</span>: <span class="n">19</span>
+<span class="k">focus</span>:
+  - <span class="s">cloud-native on AWS</span>
+  - <span class="s">AI/ML & generative AI</span>
+  - <span class="s">event-driven big data</span>
+<span class="k">stack</span>: [<span class="s">Java</span>, <span class="s">Python</span>, <span class="s">Node.js</span>, <span class="s">Go</span>]
+<span class="k">kaggle</span>: { <span class="k">gold</span>: <span class="n">${P.kaggle.gold}</span>, <span class="k">silver</span>: <span class="n">${P.kaggle.silver}</span>, <span class="k">bronze</span>: <span class="n">${P.kaggle.bronze}</span> }
+<span class="c"># open to architecture & consulting</span>`;
+
+$("stats").innerHTML = P.stats.map(s =>
+  `<div class="stat"><b class="grad-text" data-count="${s.value}" data-prefix="${s.prefix || ""}" data-suffix="${s.suffix}">${s.prefix || ""}${s.value}${s.suffix}</b><span>${esc(s.label)}</span></div>`).join("");
+
+$("about-text").innerHTML = P.about.map(p => `<p>${esc(p)}</p>`).join("");
+$("focus").innerHTML = P.focus.map(f =>
+  `<div class="focus"><div class="ic">${svg(f.icon)}</div><div><h4>${esc(f.title)}</h4><p>${esc(f.text)}</p></div></div>`).join("");
+
+$("impact-grid").innerHTML = P.impact.map(i =>
+  `<div class="card reveal"><div class="num grad-text">${esc(i.num)}</div><p>${esc(i.text)}</p><div class="where">@ ${esc(i.where)}</div></div>`).join("");
+
+const roleHtml = r => `
+  <div class="role card reveal${r.current ? " current" : ""}">
+    <div class="role-head"><h3>${esc(r.role)} · <span class="org">${esc(r.org)}</span></h3><span class="meta">${esc(r.when)} · ${esc(r.place)}</span></div>
+    <ul>${r.bullets.map(b => `<li>${esc(b)}</li>`).join("")}</ul>
+    <div class="tags">${r.tags.map(t => `<span class="tag">${esc(t)}</span>`).join("")}</div>
+  </div>`;
+const shown = P.experience.slice(0, P.visibleRoles), rest = P.experience.slice(P.visibleRoles);
+$("timeline").innerHTML = shown.map(roleHtml).join("") +
+  (rest.length ? `<div class="earlier" id="earlier">${rest.map(roleHtml).join("")}</div>
+  <button class="btn sm more-btn" id="more-btn" aria-expanded="false">Show ${rest.length} earlier roles</button>` : "");
+const moreBtn = $("more-btn");
+if (moreBtn) moreBtn.onclick = () => {
+  const box = $("earlier"), open = box.classList.toggle("open");
+  box.querySelectorAll(".reveal").forEach(el => el.classList.add("in"));
+  moreBtn.textContent = open ? "Show fewer roles" : `Show ${rest.length} earlier roles`;
+  moreBtn.setAttribute("aria-expanded", open);
+};
+
+$("bento").innerHTML = P.skills.map(g =>
+  `<div class="card reveal"><h3>${svg(g.icon)}${esc(g.title)}</h3><div class="chips">${g.items.map(s => `<span class="chip">${esc(s)}</span>`).join("")}</div></div>`).join("");
+
+const K = P.kaggle;
+$("recog").innerHTML = `
+  <div class="card reveal"><h3 class="t">Kaggle medalist · ${esc(K.years)}</h3>
+    <div class="medals"><div class="medal g"><b>${K.gold}</b><span>Gold</span></div><div class="medal s"><b>${K.silver}</b><span>Silver</span></div><div class="medal b"><b>${K.bronze}</b><span>Bronze</span></div></div>
+    <p style="margin:0;color:var(--muted);font-size:14.5px">Recognized for innovative AI/ML and data science solutions in competitive data science.</p></div>
+  <div class="card reveal"><h3 class="t">Certifications</h3><ul class="list-clean">${P.certifications.map(c => `<li><b>${esc(c.name)}</b><span>${esc(c.by)}</span></li>`).join("")}</ul></div>
+  <div class="card reveal"><h3 class="t">Education</h3><ul class="list-clean">${P.education.map(c => `<li><b>${esc(c.name)}</b><span>${esc(c.by)}</span></li>`).join("")}</ul></div>`;
+
 $("project-grid").innerHTML = P.projects.map(p => `
-  <div class="card"><h3>${esc(p.name)}</h3><p>${esc(p.desc)}</p>
-  <div class="tags">${p.tags.map(esc).join(" · ")}</div>
-  <a href="https://github.com/eswarkrishna/${esc(p.repo)}" target="_blank" rel="noopener">View on GitHub →</a></div>`).join("");
-$("contact-text").innerHTML = `Based in ${esc(P.location)}. Open to architecture and consulting work. ` +
-  (P.email ? `Reach me at <a href="mailto:${esc(P.email)}">${esc(P.email)}</a>.` : `The best way to reach me is on LinkedIn.`);
-$("contact-links").innerHTML = linkHtml(false);
+  <a class="card project reveal" href="https://github.com/eswarkrishna/${esc(p.repo)}" target="_blank" rel="noopener">
+    <div class="top"><div class="folder">${svg("folder")}</div><div class="arrow">${svg("arrow")}</div></div>
+    <h3>${esc(p.name)}</h3><p>${esc(p.desc)}</p>
+    <div class="tags">${p.tags.map(t => `<span class="tag">${esc(t)}</span>`).join("")}</div>
+  </a>`).join("");
+
+$("contact-text").textContent = `Based in ${P.location}. I'm open to enterprise architecture, AI platform and consulting engagements. The fastest way to reach me is LinkedIn.`;
+$("contact-links").innerHTML =
+  (P.email ? `<a class="btn primary" href="mailto:${esc(P.email)}">${svg("mail")}Email me</a>` : "") +
+  Object.entries(P.links).map(([k, v], i) =>
+    `<a class="btn${!P.email && i === 0 ? " primary" : ""}" href="${esc(v)}" target="_blank" rel="noopener">${svg(socialIcon[k] || "arrow")}${esc(k)}</a>`).join("");
 $("foot").textContent = `© ${new Date().getFullYear()} ${P.name}`;
+
+/* Theme */
+const root = document.documentElement, themeBtn = $("theme-btn");
+let saved = null; try { saved = localStorage.getItem("theme"); } catch (e) {}
+const setTheme = t => { root.dataset.theme = t; themeBtn.innerHTML = svg(t === "dark" ? "sun" : "moon"); };
+setTheme(saved || (matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark"));
+themeBtn.onclick = () => { const t = root.dataset.theme === "dark" ? "light" : "dark"; setTheme(t); try { localStorage.setItem("theme", t); } catch (e) {} };
+
+/* Reveal + counters */
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const countUp = el => {
+  const end = +el.dataset.count, pre = el.dataset.prefix, suf = el.dataset.suffix, t0 = performance.now(), dur = 1200;
+  const step = now => { const p = Math.min(1, (now - t0) / dur), v = Math.round(end * (1 - Math.pow(1 - p, 3)));
+    el.textContent = pre + v + suf; if (p < 1) requestAnimationFrame(step); };
+  requestAnimationFrame(step);
+};
+if ("IntersectionObserver" in window && !reduce) {
+  const io = new IntersectionObserver(entries => entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    e.target.classList.add("in");
+    e.target.querySelectorAll("[data-count]").forEach(countUp);
+    io.unobserve(e.target);
+  }), { threshold: 0.12 });
+  document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+} else {
+  document.querySelectorAll(".reveal").forEach(el => el.classList.add("in"));
+}
+
+/* Active nav link */
+const links = [...document.querySelectorAll("#nav-links a")];
+const secIO = new IntersectionObserver(entries => entries.forEach(e => {
+  if (e.isIntersecting) links.forEach(a => a.classList.toggle("active", a.getAttribute("href") === "#" + e.target.id));
+}), { rootMargin: "-45% 0px -50% 0px" });
+links.forEach(a => { const s = document.querySelector(a.getAttribute("href")); if (s) secIO.observe(s); });
 </script>
 </body>
 </html>
