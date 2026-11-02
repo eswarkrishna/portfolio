@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Eswar Krishna · Portfolio</title>
-<meta name="description" content="Portfolio of Eswar Krishna">
+<meta name="description" content="Eswara Krishna Aluri: enterprise architect and engineering leader in AI/ML and cloud">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -73,11 +73,12 @@
     <h1 id="name"></h1>
     <p class="headline" id="headline"></p>
     <p id="summary"></p>
-    <div class="links" id="hero-links"></div>
+    <ul class="bullets" id="highlights"></ul>
+    <div class="links" id="hero-links" style="margin-top:20px"></div>
   </section>
   <section id="experience"><h2>Experience</h2><div id="jobs"></div></section>
   <section id="education"><h2>Education</h2><div id="edu"></div></section>
-  <section id="skills"><h2>Skills</h2><div id="skill-groups"></div></section>
+  <section id="skills"><h2>Skills</h2><div id="skill-groups"></div><h2 style="margin-top:32px">Certifications</h2><div class="chips" id="certs"></div></section>
   <section id="projects"><h2>Projects</h2><div class="grid" id="project-grid"></div></section>
   <section id="contact"><h2>Contact</h2><p id="contact-text"></p><div class="links" id="contact-links"></div></section>
 </main>
@@ -86,36 +87,76 @@
 <script>
 /* ===== Edit everything below to update the site ===== */
 const PROFILE = {
-  name: "Eswar Krishna",
-  headline: "[Headline from LinkedIn, e.g. Senior Data Engineer · AI/ML]",
-  summary: "[About section from LinkedIn goes here.]",
-  location: "[City, Country]",
-  email: "[your-email@example.com]",
+  name: "Eswara Krishna Aluri",
+  headline: "Enterprise Architect & Engineering Leader · AI/ML · Cloud & AI-Native · Full-stack",
+  summary: "Senior Advisor at Evernorth Health Services and former Principal Solutions Architect at DMI, with nearly 19 years of experience building secure, scalable and intelligent platforms. I architect cloud-native solutions on AWS, design and deploy ML and generative AI systems, and build big data platforms on Kafka, Elasticsearch, Redis and the ELK stack. I work across Java, Python, Node.js and Go, and focus on turning complex business problems into technical solutions with measurable impact.",
+  highlights: [
+    "Kaggle medalist (2023–2024): 1 gold, 1 silver, 3 bronze",
+    "Architected platforms handling millions of daily transactions with high availability",
+    "Led cross-functional teams on enterprise modernization in healthcare, insurance and HCM",
+  ],
+  location: "Hyderabad, Telangana, India",
+  email: "",
   links: {
-    LinkedIn: "https://www.linkedin.com/in/[your-handle]",
+    LinkedIn: "https://www.linkedin.com/in/eswarakrishna",
     GitHub: "https://github.com/eswarkrishna",
   },
   experience: [
-    { role: "[Job title]", org: "[Company]", when: "[2022 – Present]",
-      bullets: ["[Key achievement]", "[Key achievement]"] },
+    { role: "Senior Advisor", org: "Evernorth Health Services · Hyderabad", when: "Aug 2024 – Oct 2026",
+      bullets: [
+        "Designed AI-driven solution strategies for pharmacy, payment integration and insurance platforms.",
+        "Migrated Java Spring Boot monoliths to Node.js microservices on AWS EKS using spec-driven development with Cursor and GitHub Copilot, improving time to market by 60% and cutting implementation cost by 80%.",
+        "Built cloud-native healthcare solutions on AWS with strong observability, automated blue/green deployments and secure integrations.",
+        "Contributed to architecture governance and modernization frameworks that reduced technical debt.",
+      ] },
+    { role: "Principal Solutions Architect", org: "DMI (Digital Management, LLC) · Chennai", when: "Dec 2021 – Aug 2024",
+      bullets: [
+        "Architected insurance-domain solutions across Java, Angular, Python, Spring Boot, AWS Lambda, API Gateway, Kong, Cognito, Elasticsearch, Terraform and PostgreSQL.",
+        "Designed AI/ML claim-processing optimization and automatic fault prediction, saving 40–50% of processing time overall.",
+        "Built visualization dashboards that set a roadmap to 2× product revenue.",
+        "Cut deployment costs by about 25% by re-engineering operational processes.",
+      ] },
+    { role: "Software Development Consultant", org: "ADP · Hyderabad", when: "Dec 2016 – Nov 2021",
+      bullets: [
+        "Led development of HCM products on AWS, microservices, Spring Boot, Angular, Kafka, Redis and ELK.",
+        "Part of a cross-functional team that delivered $1M in cost savings.",
+        "Built a global audit log dashboard that cut time spent analyzing support changes by 50%.",
+      ] },
+    { role: "Senior Systems Analyst", org: "UST Global · Bengaluru", when: "Sep 2014 – Dec 2016",
+      bullets: [
+        "Built a highly available IoT platform for location-aware services for Cisco EMSP using Storm, Kafka, Mule, Redis, Zookeeper and RabbitMQ on AWS.",
+        "Served as Scrum Master for cross-functional delivery.",
+      ] },
+    { role: "Principal Engineer", org: "MeritTrac Services · Bengaluru", when: "Jan 2013 – Sep 2014",
+      bullets: ["Built the core modules of an exam assessment platform from scratch and took them to production, leading a team of two."] },
+    { role: "Senior Software Engineer", org: "Cisco Video Technologies · Bengaluru", when: "Sep 2011 – Jan 2013",
+      bullets: ["Implemented Java EPG features using core Java, design patterns and XML/XSLT."] },
+    { role: "Senior Software Engineer", org: "OnMobile · Bengaluru", when: "Sep 2008 – Aug 2011",
+      bullets: ["Delivered RingBackTone frameworks (Web/WAP and USSD) for 5–6 international and domestic clients, scaling them with Lucene, Solr and Memcached."] },
+    { role: "Software Engineer", org: "Aricent Technologies · Bengaluru", when: "Aug 2007 – Sep 2008",
+      bullets: ["Built telecom network performance and configuration tooling in Java."] },
   ],
   education: [
-    { role: "[Degree]", org: "[University]", when: "[Years]", bullets: [] },
+    { role: "Advanced Management Programme in Business Analytics", org: "Indian School of Business", when: "2016 – 2017", bullets: [] },
+    { role: "MSIT, Computer Software Engineering", org: "IIIT Hyderabad", when: "2005 – 2007", bullets: [] },
+    { role: "B.Tech, Computer Science and Information Technology", org: "Nagarjuna Institute of Technology", when: "2000 – 2004", bullets: [] },
   ],
   skills: {
-    "Languages": ["Python", "Java", "R", "JavaScript"],
-    "Data & AI": ["Agentic AI", "Machine learning", "Spark", "Storm"],
-    "Tools": ["Git", "Docker", "SymmetricDS"],
+    "Architecture & AI": ["Software architecture", "Generative AI", "Machine learning", "Deep learning", "NLP", "Spec-driven development"],
+    "Cloud & DevOps": ["AWS", "EKS", "Lambda", "API Gateway", "Terraform", "Blue/green deployments"],
+    "Data & Messaging": ["Kafka", "Elasticsearch", "ELK", "Redis", "DynamoDB", "PostgreSQL", "Storm"],
+    "Languages & Frameworks": ["Java", "Spring Boot", "Python", "Node.js", "Go", "Angular"],
   },
+  certifications: ["AWS Certified AI Practitioner", "The Data Scientist’s Toolbox", "R Programming", "Using Databases with Python"],
   projects: [
     { name: "AgenticAI Capstone", repo: "AgenticAI-Capstone",
-      desc: "[One-line description]", tags: ["Python", "LLM agents"] },
+      desc: "Capstone project exploring agentic AI workflows.", tags: ["Python", "LLM agents"] },
     { name: "Financial Planner", repo: "FinancialPlanner",
-      desc: "[One-line description]", tags: [] },
+      desc: "Personal financial planning tool.", tags: [] },
     { name: "Stock Predict", repo: "stock_predict",
-      desc: "[One-line description]", tags: ["Python", "ML"] },
+      desc: "Machine learning models for stock price prediction.", tags: ["Python", "ML"] },
     { name: "SymmetricDS Config", repo: "symmetricds-config",
-      desc: "[One-line description]", tags: ["Data sync"] },
+      desc: "Configuration for database replication with SymmetricDS.", tags: ["Data sync"] },
   ],
 };
 /* ===== End of editable content ===== */
@@ -128,6 +169,8 @@ $("brand").textContent = P.name;
 $("name").textContent = P.name;
 $("headline").textContent = P.headline;
 $("summary").textContent = P.summary;
+$("highlights").innerHTML = P.highlights.map(h => `<li>${esc(h)}</li>`).join("");
+$("certs").innerHTML = P.certifications.map(c => `<span class="chip">${esc(c)}</span>`).join("");
 const linkHtml = (primary) => Object.entries(P.links)
   .map(([k, v], i) => `<a class="btn${primary && i === 0 ? " primary" : ""}" href="${esc(v)}" target="_blank" rel="noopener">${esc(k)}</a>`).join("");
 $("hero-links").innerHTML = linkHtml(true) + `<a class="btn" href="#contact">Contact</a>`;
@@ -143,7 +186,8 @@ $("project-grid").innerHTML = P.projects.map(p => `
   <div class="card"><h3>${esc(p.name)}</h3><p>${esc(p.desc)}</p>
   <div class="tags">${p.tags.map(esc).join(" · ")}</div>
   <a href="https://github.com/eswarkrishna/${esc(p.repo)}" target="_blank" rel="noopener">View on GitHub →</a></div>`).join("");
-$("contact-text").innerHTML = `Based in ${esc(P.location)}. Reach me at <a href="mailto:${esc(P.email)}">${esc(P.email)}</a>.`;
+$("contact-text").innerHTML = `Based in ${esc(P.location)}. Open to architecture and consulting work. ` +
+  (P.email ? `Reach me at <a href="mailto:${esc(P.email)}">${esc(P.email)}</a>.` : `The best way to reach me is on LinkedIn.`);
 $("contact-links").innerHTML = linkHtml(false);
 $("foot").textContent = `© ${new Date().getFullYear()} ${P.name}`;
 </script>
