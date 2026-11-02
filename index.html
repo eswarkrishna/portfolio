@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Eswar Krishna · Portfolio</title>
+<meta name="description" content="Eswara Krishna Aluri: enterprise architect and engineering leader in AI/ML and cloud">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fbfbfa; --surface: #ffffff; --text: #1c1d1f; --muted: #5f6368;
+    --line: #e6e6e3; --accent: #2b59c3; --accent-soft: #e9effb;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #111214; --surface: #1a1c1f; --text: #ececec; --muted: #a0a4a8;
+            --line: #2a2d31; --accent: #7aa2ff; --accent-soft: #1d2638; }
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+         font: 16px/1.6 Inter, system-ui, sans-serif; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 0 20px; }
+  header.nav { position: sticky; top: 0; background: color-mix(in srgb, var(--bg) 88%, transparent);
+               backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); z-index: 10; }
+  header.nav .wrap { display: flex; justify-content: space-between; align-items: center; height: 56px; }
+  header.nav nav { display: flex; gap: 18px; flex-wrap: wrap; font-size: 14px; }
+  header.nav nav a { color: var(--muted); }
+  .brand { font-weight: 700; color: var(--text); }
+  section { padding: 56px 0; border-bottom: 1px solid var(--line); }
+  h1 { font-size: clamp(32px, 6vw, 48px); line-height: 1.1; margin: 0 0 8px; }
+  h2 { font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin: 0 0 24px; }
+  h3 { margin: 0; font-size: 18px; }
+  .headline { font-size: 20px; color: var(--muted); margin: 0 0 20px; }
+  .links { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn { border: 1px solid var(--line); background: var(--surface); padding: 8px 14px; border-radius: 8px;
+         color: var(--text); font-size: 14px; font-weight: 500; }
+  .btn.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .job { display: grid; grid-template-columns: 160px 1fr; gap: 16px; padding: 18px 0; border-top: 1px solid var(--line); }
+  .job:first-of-type { border-top: 0; padding-top: 0; }
+  .when { color: var(--muted); font-size: 14px; }
+  .org { color: var(--muted); }
+  ul.bullets { margin: 8px 0 0; padding-left: 18px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip { background: var(--accent-soft); color: var(--accent); padding: 4px 10px; border-radius: 999px; font-size: 14px; }
+  .skill-group { margin-bottom: 18px; }
+  .skill-group h3 { font-size: 15px; margin-bottom: 8px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 18px; }
+  .card p { color: var(--muted); font-size: 15px; margin: 8px 0 12px; }
+  .tags { font-size: 13px; color: var(--muted); }
+  footer { padding: 32px 0; color: var(--muted); font-size: 14px; }
+  @media (max-width: 600px) {
+    .job { grid-template-columns: 1fr; gap: 4px; }
+    header.nav nav { gap: 12px; }
+    header.nav .brand { display: none; }
+  }
+</style>
+</head>
+<body>
+<header class="nav"><div class="wrap">
+  <a class="brand" href="#top" id="brand"></a>
+  <nav>
+    <a href="#about">About</a><a href="#experience">Experience</a><a href="#skills">Skills</a>
+    <a href="#projects">Projects</a><a href="#contact">Contact</a>
+  </nav>
+</div></header>
+
+<main class="wrap" id="top">
+  <section id="about">
+    <h1 id="name"></h1>
+    <p class="headline" id="headline"></p>
+    <p id="summary"></p>
+    <ul class="bullets" id="highlights"></ul>
+    <div class="links" id="hero-links" style="margin-top:20px"></div>
+  </section>
+  <section id="experience"><h2>Experience</h2><div id="jobs"></div></section>
+  <section id="education"><h2>Education</h2><div id="edu"></div></section>
+  <section id="skills"><h2>Skills</h2><div id="skill-groups"></div><h2 style="margin-top:32px">Certifications</h2><div class="chips" id="certs"></div></section>
+  <section id="projects"><h2>Projects</h2><div class="grid" id="project-grid"></div></section>
+  <section id="contact"><h2>Contact</h2><p id="contact-text"></p><div class="links" id="contact-links"></div></section>
+</main>
+<footer class="wrap" id="foot"></footer>
+
+<script>
+/* ===== Edit everything below to update the site ===== */
+const PROFILE = {
+  name: "Eswara Krishna Aluri",
+  headline: "Enterprise Architect & Engineering Leader · AI/ML · Cloud & AI-Native · Full-stack",
+  summary: "Senior Advisor at Evernorth Health Services and former Principal Solutions Architect at DMI, with nearly 19 years of experience building secure, scalable and intelligent platforms. I architect cloud-native solutions on AWS, design and deploy ML and generative AI systems, and build big data platforms on Kafka, Elasticsearch, Redis and the ELK stack. I work across Java, Python, Node.js and Go, and focus on turning complex business problems into technical solutions with measurable impact.",
+  highlights: [
+    "Kaggle medalist (2023–2024): 1 gold, 1 silver, 3 bronze",
+    "Architected platforms handling millions of daily transactions with high availability",
+    "Led cross-functional teams on enterprise modernization in healthcare, insurance and HCM",
+  ],
+  location: "Hyderabad, Telangana, India",
+  email: "",
+  links: {
+    LinkedIn: "https://www.linkedin.com/in/eswarakrishna",
+    GitHub: "https://github.com/eswarkrishna",
+  },
+  experience: [
+    { role: "Senior Advisor", org: "Evernorth Health Services · Hyderabad", when: "Aug 2024 – Oct 2026",
+      bullets: [
+        "Designed AI-driven solution strategies for pharmacy, payment integration and insurance platforms.",
+        "Migrated Java Spring Boot monoliths to Node.js microservices on AWS EKS using spec-driven development with Cursor and GitHub Copilot, improving time to market by 60% and cutting implementation cost by 80%.",
+        "Built cloud-native healthcare solutions on AWS with strong observability, automated blue/green deployments and secure integrations.",
+        "Contributed to architecture governance and modernization frameworks that reduced technical debt.",
+      ] },
+    { role: "Principal Solutions Architect", org: "DMI (Digital Management, LLC) · Chennai", when: "Dec 2021 – Aug 2024",
+      bullets: [
+        "Architected insurance-domain solutions across Java, Angular, Python, Spring Boot, AWS Lambda, API Gateway, Kong, Cognito, Elasticsearch, Terraform and PostgreSQL.",
+        "Designed AI/ML claim-processing optimization and automatic fault prediction, saving 40–50% of processing time overall.",
+        "Built visualization dashboards that set a roadmap to 2× product revenue.",
+        "Cut deployment costs by about 25% by re-engineering operational processes.",
+      ] },
+    { role: "Software Development Consultant", org: "ADP · Hyderabad", when: "Dec 2016 – Nov 2021",
+      bullets: [
+        "Led development of HCM products on AWS, microservices, Spring Boot, Angular, Kafka, Redis and ELK.",
+        "Part of a cross-functional team that delivered $1M in cost savings.",
+        "Built a global audit log dashboard that cut time spent analyzing support changes by 50%.",
+      ] },
+    { role: "Senior Systems Analyst", org: "UST Global · Bengaluru", when: "Sep 2014 – Dec 2016",
+      bullets: [
+        "Built a highly available IoT platform for location-aware services for Cisco EMSP using Storm, Kafka, Mule, Redis, Zookeeper and RabbitMQ on AWS.",
+        "Served as Scrum Master for cross-functional delivery.",
+      ] },
+    { role: "Principal Engineer", org: "MeritTrac Services · Bengaluru", when: "Jan 2013 – Sep 2014",
+      bullets: ["Built the core modules of an exam assessment platform from scratch and took them to production, leading a team of two."] },
+    { role: "Senior Software Engineer", org: "Cisco Video Technologies · Bengaluru", when: "Sep 2011 – Jan 2013",
+      bullets: ["Implemented Java EPG features using core Java, design patterns and XML/XSLT."] },
+    { role: "Senior Software Engineer", org: "OnMobile · Bengaluru", when: "Sep 2008 – Aug 2011",
+      bullets: ["Delivered RingBackTone frameworks (Web/WAP and USSD) for 5–6 international and domestic clients, scaling them with Lucene, Solr and Memcached."] },
+    { role: "Software Engineer", org: "Aricent Technologies · Bengaluru", when: "Aug 2007 – Sep 2008",
+      bullets: ["Built telecom network performance and configuration tooling in Java."] },
+  ],
+  education: [
+    { role: "Advanced Management Programme in Business Analytics", org: "Indian School of Business", when: "2016 – 2017", bullets: [] },
+    { role: "MSIT, Computer Software Engineering", org: "IIIT Hyderabad", when: "2005 – 2007", bullets: [] },
+    { role: "B.Tech, Computer Science and Information Technology", org: "Nagarjuna Institute of Technology", when: "2000 – 2004", bullets: [] },
+  ],
+  skills: {
+    "Architecture & AI": ["Software architecture", "Generative AI", "Machine learning", "Deep learning", "NLP", "Spec-driven development"],
+    "Cloud & DevOps": ["AWS", "EKS", "Lambda", "API Gateway", "Terraform", "Blue/green deployments"],
+    "Data & Messaging": ["Kafka", "Elasticsearch", "ELK", "Redis", "DynamoDB", "PostgreSQL", "Storm"],
+    "Languages & Frameworks": ["Java", "Spring Boot", "Python", "Node.js", "Go", "Angular"],
+  },
+  certifications: ["AWS Certified AI Practitioner", "The Data Scientist’s Toolbox", "R Programming", "Using Databases with Python"],
+  projects: [
+    { name: "AgenticAI Capstone", repo: "AgenticAI-Capstone",
+      desc: "Capstone project exploring agentic AI workflows.", tags: ["Python", "LLM agents"] },
+    { name: "Financial Planner", repo: "FinancialPlanner",
+      desc: "Personal financial planning tool.", tags: [] },
+    { name: "Stock Predict", repo: "stock_predict",
+      desc: "Machine learning models for stock price prediction.", tags: ["Python", "ML"] },
+    { name: "SymmetricDS Config", repo: "symmetricds-config",
+      desc: "Configuration for database replication with SymmetricDS.", tags: ["Data sync"] },
+  ],
+};
+/* ===== End of editable content ===== */
+
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const P = PROFILE;
+document.title = `${P.name} · Portfolio`;
+$("brand").textContent = P.name;
+$("name").textContent = P.name;
+$("headline").textContent = P.headline;
+$("summary").textContent = P.summary;
+$("highlights").innerHTML = P.highlights.map(h => `<li>${esc(h)}</li>`).join("");
+$("certs").innerHTML = P.certifications.map(c => `<span class="chip">${esc(c)}</span>`).join("");
+const linkHtml = (primary) => Object.entries(P.links)
+  .map(([k, v], i) => `<a class="btn${primary && i === 0 ? " primary" : ""}" href="${esc(v)}" target="_blank" rel="noopener">${esc(k)}</a>`).join("");
+$("hero-links").innerHTML = linkHtml(true) + `<a class="btn" href="#contact">Contact</a>`;
+const timeline = items => items.map(j => `
+  <div class="job"><div class="when">${esc(j.when)}</div>
+  <div><h3>${esc(j.role)}</h3><div class="org">${esc(j.org)}</div>
+  ${j.bullets.length ? `<ul class="bullets">${j.bullets.map(b => `<li>${esc(b)}</li>`).join("")}</ul>` : ""}</div></div>`).join("");
+$("jobs").innerHTML = timeline(P.experience);
+$("edu").innerHTML = timeline(P.education);
+$("skill-groups").innerHTML = Object.entries(P.skills).map(([g, list]) => `
+  <div class="skill-group"><h3>${esc(g)}</h3><div class="chips">${list.map(s => `<span class="chip">${esc(s)}</span>`).join("")}</div></div>`).join("");
+$("project-grid").innerHTML = P.projects.map(p => `
+  <div class="card"><h3>${esc(p.name)}</h3><p>${esc(p.desc)}</p>
+  <div class="tags">${p.tags.map(esc).join(" · ")}</div>
+  <a href="https://github.com/eswarkrishna/${esc(p.repo)}" target="_blank" rel="noopener">View on GitHub →</a></div>`).join("");
+$("contact-text").innerHTML = `Based in ${esc(P.location)}. Open to architecture and consulting work. ` +
+  (P.email ? `Reach me at <a href="mailto:${esc(P.email)}">${esc(P.email)}</a>.` : `The best way to reach me is on LinkedIn.`);
+$("contact-links").innerHTML = linkHtml(false);
+$("foot").textContent = `© ${new Date().getFullYear()} ${P.name}`;
+</script>
+</body>
+</html>
