@@ -353,7 +353,7 @@ const PROFILE = {
     { icon: "users", title: "Technology leadership", text: "Cross-functional teams, architecture governance and executive advisory." },
   ],
   location: "Hyderabad, India",
-  email: "",
+  email: "eswarkrishna09.one@gmail.com",
   links: {
     LinkedIn: "https://www.linkedin.com/in/eswarakrishna",
     GitHub: "https://github.com/eswarkrishna",
@@ -523,7 +523,7 @@ $("project-grid").innerHTML = P.projects.map(p => `
     <div class="tags">${p.tags.map(t => `<span class="tag">${esc(t)}</span>`).join("")}</div>
   </a>`).join("");
 
-$("contact-text").textContent = `Based in ${P.location}. I'm open to enterprise architecture, AI platform and consulting engagements. The fastest way to reach me is LinkedIn.`;
+$("contact-text").textContent = `Based in ${P.location}. I'm open to enterprise architecture, AI platform and consulting engagements. Email me at ${P.email}.`;
 $("contact-links").innerHTML =
   (P.email ? `<a class="btn primary" href="mailto:${esc(P.email)}">${svg("mail")}Email me</a>` : "") +
   Object.entries(P.links).map(([k, v], i) =>
