@@ -160,11 +160,9 @@
 
   /* Skills bento */
   .bento { display: grid; grid-template-columns: repeat(6, 1fr); gap: 18px; }
-  .bento .card:nth-child(1) { grid-column: span 3; }
-  .bento .card:nth-child(2) { grid-column: span 3; }
-  .bento .card:nth-child(3) { grid-column: span 2; }
-  .bento .card:nth-child(4) { grid-column: span 2; }
-  .bento .card:nth-child(5) { grid-column: span 2; }
+  .bento .card { grid-column: span 2; }
+  .bento .card:nth-child(4) { grid-column: span 4; }
+  .bento .card:nth-child(6) { grid-column: span 6; }
   .bento h3 { display: flex; align-items: center; gap: 10px; font-family: var(--display); font-size: 18px; margin: 0 0 16px; }
   .bento h3 svg { width: 20px; height: 20px; color: var(--accent); }
   .chips { display: flex; flex-wrap: wrap; gap: 8px; }
@@ -305,7 +303,7 @@
   <section id="skills">
     <div class="eyebrow">Toolkit</div>
     <h2>Skills & technologies</h2>
-    <p class="lead">A polyglot stack, chosen for the problem rather than the trend.</p>
+    <p class="lead">Frameworks and libraries I have shipped with, drawn from 19 years of production work and my open-source projects.</p>
     <div class="bento" id="bento"></div>
   </section>
 
@@ -408,11 +406,12 @@ const PROFILE = {
   ],
   visibleRoles: 3,
   skills: [
-    { icon: "brain", title: "Architecture & AI", items: ["Software architecture", "Generative AI", "Machine learning", "Deep learning", "NLP", "Spec-driven development", "AI-assisted engineering"] },
-    { icon: "cloud", title: "Cloud & DevOps", items: ["AWS", "EKS", "Lambda", "API Gateway", "Cognito", "Terraform", "Blue/green deployments", "Disaster recovery"] },
-    { icon: "db", title: "Data & messaging", items: ["Kafka", "Elasticsearch", "ELK", "Redis", "DynamoDB", "PostgreSQL", "Storm"] },
-    { icon: "code", title: "Languages", items: ["Java", "Python", "Node.js", "Go", "TypeScript"] },
-    { icon: "layers", title: "Frameworks", items: ["Spring Boot", "Angular", "Microservices", "OAuth 2.0", "Kong"] },
+    { icon: "brain", title: "AI & machine learning", items: ["Generative AI", "LangGraph", "LangChain", "OpenAI API", "ChromaDB", "Streamlit", "Pydantic", "scikit-learn", "pandas", "NumPy", "NLP", "Deep learning"] },
+    { icon: "layers", title: "Backend frameworks", items: ["Spring Boot", "Spring Integration", "Hibernate / JPA", "JMS / JTA", "Node.js", "Mule ESB", "OAuth 2.0", "Kong", "REST microservices"] },
+    { icon: "code", title: "Frontend & mobile", items: ["React", "Angular", "TypeScript", "Vite", "Capacitor (Android / iOS)", "Zod", "jsPDF"] },
+    { icon: "db", title: "Data, messaging & search", items: ["Kafka", "Apache Storm", "RabbitMQ", "ZooKeeper", "Elasticsearch", "Lucene", "Solr", "Redis", "Memcached", "Ehcache", "Oracle Coherence", "PostgreSQL", "MySQL", "Oracle", "MS SQL", "DynamoDB", "Oracle GoldenGate", "SymmetricDS"] },
+    { icon: "cloud", title: "Cloud & DevOps", items: ["AWS EKS", "Lambda", "API Gateway", "Cognito", "Cloudflare Workers", "Terraform", "Ansible", "ELK", "Splunk", "Blue/green deployments", "Disaster recovery"] },
+    { icon: "check", title: "Languages & testing", items: ["Java", "Python", "TypeScript", "JavaScript", "Go", "Rust", "R (dplyr, ggplot2, Shiny)", "JUnit", "pytest", "Vitest", "Testing Library", "Puppeteer", "axe-core"] },
   ],
   kaggle: { gold: 1, silver: 1, bronze: 3, years: "2023–2024" },
   certifications: [
@@ -442,6 +441,7 @@ const ICONS = {
   users: '<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.5a3.5 3.5 0 0 1 0 7M18 14a6 6 0 0 1 3.5 6"/>',
   code: '<path d="M8 6l-6 6 6 6M16 6l6 6-6 6"/>',
   layers: '<path d="M12 3l9 5-9 5-9-5 9-5zM3 13l9 5 9-5"/>',
+  check: '<path d="M9 12l2 2 4-4"/><rect x="3" y="3" width="18" height="18" rx="4"/>',
   folder: '<path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>',
   arrow: '<path d="M7 17L17 7M8 7h9v9"/>',
   linkedin: '<rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/>',
