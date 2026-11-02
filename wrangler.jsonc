@@ -5,5 +5,8 @@
   "workers_dev": true,
   "assets": {
     "directory": "."
-  }
+  },
+  "routes": [
+    { "pattern": "portfolio.eswarakrishna.com", "custom_domain": true }
+  ]
 }
