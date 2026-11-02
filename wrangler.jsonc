@@ -1,0 +1,9 @@
+{
+  "name": "portfolio",
+  "account_id": "a3943d89bc3b02247a0e92da062a350e",
+  "compatibility_date": "2026-11-02",
+  "workers_dev": true,
+  "assets": {
+    "directory": "."
+  }
+}
